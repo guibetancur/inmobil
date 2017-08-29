@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829020928) do
+ActiveRecord::Schema.define(version: 20170829235639) do
 
   create_table "promoters", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "phone"
+    t.integer  "phone",              limit: 8
     t.string   "address"
     t.text     "description"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "status"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
