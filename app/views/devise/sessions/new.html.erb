@@ -1,0 +1,85 @@
+<%= render 'layouts/navbar' %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Login</a></li>
+        </ol>
+        <h1 class="page-header">Please sign in or register</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5 col-md-offset-1">
+        <ul class="nav nav-tabs tab-lg" role="tablist">
+
+          <li role="presentation" class="<%= active_class(new_user_session_path) %>">
+            <%= link_to 'Sign In', new_user_session_path %>
+          </li>
+          <li role="presentation" class="<%= active_class(new_user_registration_path) %>" >
+            <%= link_to 'Register', new_user_registration_path %>
+          </li>
+
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="login">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="form-group">
+                <label>Email address</label>
+                <%= f.email_field :email, autofocus: true, class: "form-control input-lg" %>
+              </div>
+              <div class="form-group">
+                <label>Password</label>
+                <%= f.password_field :password, autocomplete: "off", class: "form-control input-lg" %>
+              </div>
+              
+              <div class="checkbox">
+                <label>
+                  <% if devise_mapping.rememberable? -%>
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  <% end -%>
+                </label>       
+              </div>
+
+              <%= render "devise/shared/links" %> <br>
+
+              <%= f.submit "Sign In", class: "btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+        <div> </div>
+      </div>
+      <div class="col-md-1">
+        <div class="sign-in-or"><img src="<%= image_path('sign-in-or.png')%>"><span>or</span></div>
+      </div>
+      <div class="col-md-4">
+        <div class="socal-login-buttons"> <a href="#" class="btn btn-social btn-lg btn-block btn-facebook"><i class="icon fa fa-facebook"></i> Sign In with Facebook</a> <a href="#" class="btn btn-social btn-lg btn-block btn-google"><i class="icon fa fa-google"></i> Sign In with Google</a> <a href="#" class="btn btn-social btn-lg btn-block btn-twitter"><i class="icon fa fa-twitter"></i> Sign In with Twitter</a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/footer' %>
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+  //$('[data-toggle="tooltip"]').tooltip()
+})
+</script> 
+<script type="text/javascript">
+AOS.init({
+  offset: 30
+});
+</script> 
+<script>
+var footer_height = $('#footer').outerHeight() + 30;
+if (document.getElementById('sidebar')) {
+  $(document).ready(function() {
+    $.stickysidebarscroll("#sidebar",{offset: {top: 20, bottom: footer_height}});
+  });
+};
+</script>
+
+

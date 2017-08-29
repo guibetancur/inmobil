@@ -1,0 +1,128 @@
+<%= render 'layouts/navbar' %>
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <ol class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Account</a></li>
+          <li><a href="#">Login</a></li>
+        </ol>
+        <h1 class="page-header">Porfavor ingrese los datos de Promotor</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <ul class="nav nav-tabs tab-lg" role="tablist">
+          <li role="presentation" class="active"><a href="register.html">Nuevo Promotor</a></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="register">
+
+            <%= form_for @promoter do |f| %>
+              <% if @promoter.errors.any? %>
+                <div id="errors_explanation">
+                  <h2><%= pluralize(@promoter.errors.count, "error") %> prohibited this promoter from being saved:</h2>
+                  <ul>
+                    <% @promoter.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+              <div class="form-group">
+                <%= f.label 'Telefono' %><br />
+                <%= f.telephone_field :phone, {autofocus: true, class: "form-control input-lg", required: true, placeholder: "Su Teléfono"} %>
+              </div>
+              <div class="form-group">
+                <%= f.label 'Dirección' %><br />
+                <%= f.text_field :address, {class: "form-control input-lg", required: true, placeholder: "Su Direccion"} %>
+              </div>
+              <div class="field form-group">
+                <%= f.label 'Acerca de Mí' %><br />
+                <%= f.text_area(:description, size: '24x6', class: 'form-control input-lg', required: true) %>
+              </div>
+              <div class="field form-group">
+                <%= f.label 'Foto del Perfil' %><br />
+                <%= f.file_field :photo, required: true %>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg">Registrarme</button>
+            <% end %>
+
+          </div>
+        </div>
+        <div> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-4">
+            <p><img src="img/logo.png" /></p>
+            <address>
+            <strong>Twitter, Inc.</strong><br>
+            1355 Market Street, Suite 900<br>
+            San Francisco, CA 94103<br>
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+            </address>
+            <p class="text-muted">Copyright &copy; 2016<br />
+              All rights reserved</p>
+          </div>
+          <div class="col-md-2">
+            <ul class="list-unstyled">
+              <li><a href="#">About</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Security</a></li>
+              <li><a href="#">Plans</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2">
+            <ul class="list-unstyled">
+              <li><a href="#">For Rent</a></li>
+              <li><a href="#">For Sale</a></li>
+              <li><a href="#">Commercial</a></li>
+              <li><a href="#">Agents</a></li>
+              <li><a href="#">Property Guides</a></li>
+              <li><a href="#">Jobs</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <div class="social-sharebox"> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-google"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a> <a href="#"><i class="fa fa-youtube-play"></i></a> <a href="#"><i class="fa fa-pinterest"></i></a> </div>
+            <form>
+              <h4>Subscribe Newsletter</h4>
+              <div class="input-group input-group-lg">
+                <input type="email" class="form-control" placeholder="Email Address">
+                <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Go!</button>
+                </span> </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript">
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+	//$('[data-toggle="tooltip"]').tooltip()
+})
+</script> 
+<script type="text/javascript">
+AOS.init({
+	offset: 30
+});
+</script> 
+<script>
+var footer_height = $('#footer').outerHeight() + 30;
+if (document.getElementById('sidebar')) {
+	$(document).ready(function() {
+	  $.stickysidebarscroll("#sidebar",{offset: {top: 20, bottom: footer_height}});
+	});
+};
+</script>
+</body></html>
