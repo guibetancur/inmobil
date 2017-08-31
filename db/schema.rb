@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829235639) do
+ActiveRecord::Schema.define(version: 20170831010738) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "promoters", force: :cascade do |t|
     t.integer  "user_id"
@@ -24,6 +30,8 @@ ActiveRecord::Schema.define(version: 20170829235639) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "city_id"
+    t.index ["city_id"], name: "index_promoters_on_city_id"
     t.index ["user_id"], name: "index_promoters_on_user_id"
   end
 

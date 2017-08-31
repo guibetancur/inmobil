@@ -40,6 +40,10 @@ gem "font-awesome-rails"
 gem 'devise'
 # images gem
 gem "paperclip", "~> 4.3"
+# annotate
+gem 'annotate'
+# aws
+gem 'aws-sdk', '< 2.0'
 
 
 
@@ -60,8 +64,8 @@ group :development do
 end
 
 group :production do
-   gem 'rails_12factor'
-   gem 'pg'
+  gem 'rails_12factor'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
